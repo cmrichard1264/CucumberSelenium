@@ -8,6 +8,7 @@ Feature: Login
 #  By passing parameters/strings in "some word" we can reuse test steps
 #  In my project, I was trying to keep scenarios short
 
+  @store_manager
   Scenario: Login as a store manager
     Given user is on the login page
     Then user logs in as store manager
