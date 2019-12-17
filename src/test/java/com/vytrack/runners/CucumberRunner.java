@@ -9,7 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src\\test\\resources\\features", //path to features
         glue = "com/vytrack/step_definitions",        //path to definitions
-        dryRun = false
+        dryRun = false,
+        tags = "@negative_test"
 )
 public class CucumberRunner {
+
 }
