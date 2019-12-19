@@ -31,6 +31,8 @@ public class LoginStepDefinitions {
     //  And user verifies that "Dashboard" page subtitle is displayed
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
+        System.out.println(string);
+        loginPage.waitUntilLoaderMaskDisappear();
         Assert.assertEquals(string, loginPage.getPageSubTitle());
         System.out.println("Verifying page subtitle: " + string);
     }

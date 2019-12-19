@@ -95,7 +95,7 @@ public class BrowserUtils {
         String date = df.format(new Date());
         // TakesScreenshot ---> interface from selenium which takes screenshots
         TakesScreenshot ts = (TakesScreenshot) Driver.get();
-        File source = ts.getScreenshotAs(OutputType.FILE);
+             File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
         //where screenshot will be stored
         //System.getProperty("user.dir") returns path to the project as a string

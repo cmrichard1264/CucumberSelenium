@@ -14,17 +14,19 @@ Feature: Login
     Then user logs in as store manager
     And user verifies that "Dashboard" page subtitle is displayed
 
+  @driver
   Scenario: Login as driver
     Given user is on the login page
     Then user logs in as as driver
     And user verifies that "Dashboard" page subtitle is displayed
 
+  @sales_manager
   Scenario: Login as sales manager
     Given user is on the login page
     Then user logs in as sales manager
     And user verifies that "Dashboard" page subtitle is displayed
 
-    @negative_test
+  @negative_test
   Scenario: Verify that warning message is displayed when password is not correct
     Given user is on the login page
     Then user enters "storemanager85" username and "wrong" password
