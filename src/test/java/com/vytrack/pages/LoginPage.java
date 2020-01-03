@@ -48,6 +48,11 @@ public class LoginPage extends BasePage {
         passwordInput.sendKeys(password, Keys.ENTER);
     }
 
+
+    public void login() {
+        login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+    }
+
     public void login(String role) {
         String userName = "";
         String password = ConfigurationReader.getProperty("password");

@@ -39,11 +39,28 @@ Feature: Login
     And user verifies that "Invalid user name or password." message is displayed
 
 
-    @driver_with_data_table
-    Scenario: Login as driver (data table example)
-      Given user is on the login page
-      Then user logs in as driver with following credentials
-      |username |user160    |
-      |password |UserUser123|
-      And user verifies that "Quick Launchpad" page subtitle is displayed
+  @driver_with_data_table
+  Scenario: Login as driver (data table example)
+    Given user is on the login page
+    Then user logs in as driver with following credentials
+      | username | user160     |
+      | password | UserUser123 |
+    And user verifies that "Quick Launchpad" page subtitle is displayed
+
+  @login_with_role
+  Scenario: Login as driver
+    Given user is on the login page
+    Then user logs in as as "driver"
+
+  @login_with_role
+  Scenario: Login as sales manager
+    Given user is on the login page
+    Then user logs in as as "sales manager"
+
+  @login_with_role
+  Scenario: Login as store manager
+    Given user is on the login page
+    Then user logs in as as "store manager"
+
+
 
