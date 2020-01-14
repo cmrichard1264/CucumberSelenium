@@ -97,7 +97,7 @@ public class BrowserUtils {
         String date = df.format(new Date());
         // TakesScreenshot ---> interface from selenium which takes screenshots
         TakesScreenshot ts = (TakesScreenshot) Driver.get();
-             File source = ts.getScreenshotAs(OutputType.FILE);
+        File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
         //where screenshot will be stored
         //System.getProperty("user.dir") returns path to the project as a string
@@ -120,7 +120,7 @@ public class BrowserUtils {
     public static void clickWithWait(WebElement webElement) {
         Wait wait = new FluentWait<>(Driver.get())
                 .withTimeout(Duration.ofSeconds(15))
-                .pollingEvery(Duration.ofMillis(200))
+                .pollingEvery(Duration.ofMillis(800))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(ElementNotVisibleException.class)
                 .ignoring(ElementClickInterceptedException.class)
@@ -136,7 +136,6 @@ public class BrowserUtils {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-            element.click();
         }
     }
 
@@ -157,21 +156,31 @@ public class BrowserUtils {
 
     /**
      * Wait for proper page title
+     *
      * @param pageTitle
      */
-    public static void waitForPageTitle(String pageTitle){
+    public static void waitForPageTitle(String pageTitle) {
         WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
         wait.until(ExpectedConditions.titleIs(pageTitle));
     }
 
-
-    public static List<String> getListOfString(List<WebElement> listOfWebElements){
+    /**
+     * This method will convert list of WebElements into list of string
+     *
+     * @param listOfWebElements
+     * @return list of strings
+     */
+    public static List<String> getListOfString(List<WebElement> listOfWebElements) {
         List<String> listOfStrings = new ArrayList<>();
-        for(WebElement element : listOfWebElements){
+        for (WebElement element : listOfWebElements) {
             String value = element.getText().trim();
-            if(value.length() > 0 ) {
+            //if there is no text
+            //do not add this blank text into list
+            if (value.length() > 0) {
                 listOfStrings.add(value);
             }
-        }return listOfStrings;
+        }
+        return listOfStrings;
     }
+
 }

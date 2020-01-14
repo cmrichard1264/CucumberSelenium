@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 //according to page object model design
 //we have to create corresponded page class
 //for each page of application
@@ -48,7 +47,6 @@ public class LoginPage extends BasePage {
         passwordInput.sendKeys(password, Keys.ENTER);
     }
 
-
     public void login() {
         login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
@@ -56,6 +54,7 @@ public class LoginPage extends BasePage {
     public void login(String role) {
         String userName = "";
         String password = ConfigurationReader.getProperty("password");
+
         switch (role) {
             case "driver":
                 userName = ConfigurationReader.getProperty("driver.username");
@@ -67,9 +66,10 @@ public class LoginPage extends BasePage {
                 userName = ConfigurationReader.getProperty("sales.manager.username");
                 break;
             default:
-                throw new RuntimeException("Invalid role");
+                throw new RuntimeException("Invalid role!");
         }
         login(userName, password);
     }
+
 
 }

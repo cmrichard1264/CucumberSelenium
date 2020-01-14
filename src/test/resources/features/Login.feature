@@ -1,3 +1,4 @@
+@login
 Feature: Login
   As user, I want to be able to login under different roles with username and password
 
@@ -50,17 +51,37 @@ Feature: Login
   @login_with_role
   Scenario: Login as driver
     Given user is on the login page
-    Then user logs in as as "driver"
+    Then user logs in as "driver"
 
   @login_with_role
   Scenario: Login as sales manager
     Given user is on the login page
-    Then user logs in as as "sales manager"
+    Then user logs in as "sales manager"
 
   @login_with_role
   Scenario: Login as store manager
     Given user is on the login page
-    Then user logs in as as "store manager"
+    Then user logs in as "store manager"
+
+  @login_with_role_ddt
+  Scenario Outline: DDT example, Login as <role>
+    Given user is on the login page
+    Then user logs in as "<role>"
+
+    Examples: roles
+    |role         |
+    |driver       |
+    |sales manager|
+    |store manager|
+
+  @login_with_credentials_ddt
+  Scenario Outline: DDT example with credentials, Login as <username>
+    Given user is on the login page
+    Then user enters "<username>" username and "<password>" password
 
 
-
+    Examples:
+    |username       |password   |
+    |storemanager85 |UserUser123|
+    |user160        |UserUser123|
+    |salesmanager110|UserUser123|
